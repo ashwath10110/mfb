@@ -2,15 +2,38 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { CartComponent } from './components/cart/cart.component';
+import { PagenotfoundComponent } from './components/Pagenotfound/Pagenotfound.component';
+
+import { RouterModule, Routes } from '@angular/router';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { TabsComponent } from './components/tabs/tabs.component';
+
+const appRoutes: Routes = [
+	{ path: '', component: HomeComponent },
+	{ path: 'cart', component: CartComponent },
+	{ path: '**', component: PagenotfoundComponent }
+];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		CartComponent,
+		PagenotfoundComponent,
+		NavbarComponent,
+		FooterComponent,
+		TabsComponent
+	],
+	imports: [
+		BrowserModule,
+		RouterModule.forRoot(
+			appRoutes
+		)
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
