@@ -11,6 +11,8 @@ export class ExoticVegetablesComponent implements OnInit {
 
 	numberOfItems = 100;
 
+	selectedItem = '';
+
 	constructor() {
 
 		for (var i = 0; i < this.numberOfItems; i++) {
@@ -20,6 +22,12 @@ export class ExoticVegetablesComponent implements OnInit {
 	}
 
 	ngOnInit() {
+	}
+
+	selectItem(event, item) {
+		this.selectedItem = item;
+		console.log(item);
+
 	}
 
 }
