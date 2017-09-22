@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from './../../services/app/app.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
 	selector: 'app-tabs',
@@ -9,6 +10,7 @@ import { AppService } from './../../services/app/app.service';
 export class TabsComponent implements OnInit {
 
 	constructor(
+		protected router: Router,
 		private appService: AppService
 	) { }
 
@@ -16,8 +18,10 @@ export class TabsComponent implements OnInit {
 		// this.appService.selectedTab = ''
 	}
 
-	openTab(item) {
-		console.log(item);
+	openTab(event,option) {
+		console.log(option);
+		this.appService.selectedTab = option;
+		this.router.navigate(['/' + option]);
 	}
 
 }

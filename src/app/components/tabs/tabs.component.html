@@ -1,6 +1,8 @@
 <ul class="nav nav-pills nav-justified">
-	<li (click)="openTab($event, 'Home')"><a href="#">Home</a></li>
-	<li (click)="openTab($event, 'Menu1')"><a href="#">Menu 1</a></li>
-	<li (click)="openTab($event, 'Menu2')"><a href="#">Menu 2</a></li>
-	<li (click)="openTab($event, 'Menu3')"><a href="#">Menu 3</a></li>
+	<li [ngClass]="{'active': (appService.selectedTab=='exotic-vegetables')}" (click)="openTab($event, 'exotic-vegetables')"><a>exotic-vegetables</a></li>
+	<li [ngClass]="{'active': (appService.selectedTab=='leafy-green-vegetables')}" (click)="openTab($event, 'leafy-green-vegetables')"><a>leafy-green-vegetables</a></li>
+	<li [ngClass]="{'active': (appService.selectedTab=='fresh-fruits')}" (click)="openTab($event, 'fresh-fruits')"><a>fresh-fruits</a></li>
+	<li [ngClass]="{'active': (appService.selectedTab=='fresh-vegetables')}" (click)="openTab($event, 'fresh-vegetables')"><a>fresh-vegetables</a></li>
 </ul>
+
+<router-outlet></router-outlet>
