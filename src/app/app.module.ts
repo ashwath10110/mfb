@@ -13,6 +13,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
 
 // Services
 import { AppService } from './services/app/app.service';
+import { CarousalComponent } from './components/carousal/carousal.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomeComponent },
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
 		PagenotfoundComponent,
 		NavbarComponent,
 		FooterComponent,
-		TabsComponent
+		TabsComponent,
+		CarousalComponent
 	],
 	imports: [
 		BrowserModule,
