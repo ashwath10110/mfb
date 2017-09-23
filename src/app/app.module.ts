@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -19,6 +20,10 @@ import { ExoticVegetablesComponent } from './components/exotic-vegetables/exotic
 import { LeafyGreenVegetablesComponent } from './components/leafy-green-vegetables/leafy-green-vegetables.component';
 import { FreshFruitsComponent } from './components/fresh-fruits/fresh-fruits.component';
 import { ItemComponent } from './components/item/item.component';
+import { ItemPreviewComponent } from './components/item-preview/item-preview.component';
+
+import { DialogModule } from 'primeng/primeng';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomeComponent },
@@ -27,6 +32,7 @@ const appRoutes: Routes = [
 	{ path: 'fresh-fruits', component: FreshFruitsComponent },
 	{ path: 'fresh-vegetables', component: FreshVegetablesComponent },
 	{ path: 'cart', component: CartComponent },
+	{ path: 'checkout', component: CheckoutComponent },
 	{ path: '**', component: PagenotfoundComponent }
 ];
 
@@ -44,13 +50,17 @@ const appRoutes: Routes = [
 		ExoticVegetablesComponent,
 		LeafyGreenVegetablesComponent,
 		FreshFruitsComponent,
-		ItemComponent
+		ItemComponent,
+		ItemPreviewComponent,
+		CheckoutComponent
 	],
 	imports: [
 		BrowserModule,
 		RouterModule.forRoot(
 			appRoutes
-		)
+		),
+		DialogModule,
+		BrowserAnimationsModule
 	],
 	providers: [AppService],
 	bootstrap: [AppComponent]

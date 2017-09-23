@@ -1,8 +1,17 @@
-<ul class="nav nav-pills nav-justified">
-	<li [ngClass]="{'active': (appService.selectedTab=='exotic-vegetables')}" (click)="openTab($event, 'exotic-vegetables')"><a>exotic-vegetables</a></li>
-	<li [ngClass]="{'active': (appService.selectedTab=='leafy-green-vegetables')}" (click)="openTab($event, 'leafy-green-vegetables')"><a>leafy-green-vegetables</a></li>
-	<li [ngClass]="{'active': (appService.selectedTab=='fresh-fruits')}" (click)="openTab($event, 'fresh-fruits')"><a>fresh-fruits</a></li>
-	<li [ngClass]="{'active': (appService.selectedTab=='fresh-vegetables')}" (click)="openTab($event, 'fresh-vegetables')"><a>fresh-vegetables</a></li>
-</ul>
-
-<router-outlet></router-outlet>
+<div class="row">
+	<div class="col-md-12">
+		<div class="tabbable-panel">
+			<div class="tabbable-line">
+				<ul class="nav nav-tabs nav-justified">
+					<li [ngClass]="{'active': (appService.selectedTab=='exotic-vegetables')}" (click)="openTab($event, 'exotic-vegetables')"><a id="id1">exotic-vegetables</a></li>
+					<li [ngClass]="{'active': (appService.selectedTab=='leafy-green-vegetables')}" (click)="openTab($event, 'leafy-green-vegetables')"><a>leafy-green-vegetables</a></li>
+					<li [ngClass]="{'active': (appService.selectedTab=='fresh-fruits')}" (click)="openTab($event, 'fresh-fruits')"><a>fresh-fruits</a></li>
+					<li [ngClass]="{'active': (appService.selectedTab=='fresh-vegetables')}" (click)="openTab($event, 'fresh-vegetables')"><a>fresh-vegetables</a></li>
+				</ul>
+				<div class="tab-content">
+					<router-outlet></router-outlet>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

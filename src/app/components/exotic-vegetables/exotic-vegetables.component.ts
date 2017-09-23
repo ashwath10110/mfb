@@ -9,9 +9,15 @@ export class ExoticVegetablesComponent implements OnInit {
 
 	listOfExoticVegetables = [];
 
-	numberOfItems = 100;
+	numberOfItems = 10;
 
 	selectedItem = '';
+
+	display: boolean = false;
+
+    showDialog() {
+        this.display = true;
+    }
 
 	constructor() {
 
@@ -29,5 +35,7 @@ export class ExoticVegetablesComponent implements OnInit {
 		console.log(item);
 
 	}
+
+
 
 }
