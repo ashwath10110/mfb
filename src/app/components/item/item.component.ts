@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { CartService } from './../../services/cart/cart.service';
 
 @Component({
 	selector: 'app-item',
@@ -7,16 +9,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemComponent implements OnInit {
 
-	constructor() { }
+	@Input('item') _item: string;
+	itemType = '';
+	itemCateg = {
+		1: 'exotic-vegetables',
+		2: 'leafy-green-vegetables',
+		3: 'fresh-fruits',
+		4: 'fresh-vegetables'
+	};
+	itemCount = 0;
+
+	constructor(
+		private cartService: CartService
+	) {
+	}
 
 	selectedItem = '';
 
 	ngOnInit() {
 	}
 
-	selectItem(event, item) {
-		this.selectedItem = item;
-		console.log(item);
-
+	selectItem(event) {
 	}
+
+	removeFromCart(event) {
+		if (!this.itemType) {
+			this.itemType = this._item['typeCategory'];
+		}
+		if (this.cartService.removeFromCart(this._item, this.itemType)) {
+			this.itemCount--;
+		}
+	}
+
+	getCount() {
+		return this.cartService.getCountOfItem(this._item, this.itemType)
+	}
+
+	addToCart(event, item) {
+		if (!this.itemType) {
+			this.itemType = this._item['typeCategory'];
+		}
+		this.itemCount++;
+		this.cartService.addToCart(this._item, this.itemType);
+	}
+
 }

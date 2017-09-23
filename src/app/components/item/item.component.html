@@ -4,17 +4,22 @@
 </select> -->
 
 <!-- <div class="cards"> -->
-    <a class="card" (click)="selectItem($event, item)">
+    <a class="card" (click)="selectItem()">
       <span class="card-header" style="background-image: url(http://placeimg.com/400/200/animals);">
         <span class="card-title">
-          <h3>This is a title for a card</h3>
+          <h3>{{name}}</h3>
         </span>
       </span>
       <span class="card-summary">
         A summary will also be present. Usually two to three brief sentences about the content on the detail page.
       </span>
+      <span>
+        <button type="button" (click)="removeFromCart($event)">remove</button>
+        <span>a{{getCount()}}a</span>
+        <button type="button" (click)="addToCart($event)">add</button>
+      </span>
       <span class="card-meta">
         Published: June 18th, 2015
       </span>
-    </a>      
+    </a>
 <!-- </div> -->

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsService } from './../../services/items/items.service';
+import { CartService } from './../../services/cart/cart.service';
 
 @Component({
 	selector: 'app-exotic-vegetables',
@@ -8,23 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class ExoticVegetablesComponent implements OnInit {
 
 	listOfExoticVegetables = [];
-
-	numberOfItems = 10;
-
 	selectedItem = '';
+	typeName = 'exotic-vegetables';
 
-	display: boolean = false;
-
-    showDialog() {
-        this.display = true;
-    }
-
-	constructor() {
-
-		for (var i = 0; i < this.numberOfItems; i++) {
-			this.listOfExoticVegetables.push({});;
-		}
-
+	constructor(
+		private _itemsService: ItemsService,
+		private _cartService: CartService
+	) {
+		this.listOfExoticVegetables = this._itemsService.items[this.typeName];
 	}
 
 	ngOnInit() {
@@ -32,10 +25,5 @@ export class ExoticVegetablesComponent implements OnInit {
 
 	selectItem(event, item) {
 		this.selectedItem = item;
-		console.log(item);
-
 	}
-
-
-
 }

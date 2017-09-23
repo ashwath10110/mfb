@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { CartService } from './../../services/cart/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,13 +9,15 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(protected router: Router) { }
+  constructor(protected router: Router,
+    private _cartService: CartService
+  ) { }
 
   ngOnInit() {
   }
 
   openCart(event) {
-		this.router.navigate(['/cart']);
-	}
+    this.router.navigate(['/cart']);
+  }
 
 }
