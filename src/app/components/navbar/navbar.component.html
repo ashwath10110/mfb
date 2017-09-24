@@ -4,7 +4,7 @@
       <a class="navbar-brand" href="#">WebSiteName</a>
       <a class="btn btn-success btn-lg pull-right" (click)="openCart($event)">
         <span class="badge">{{_cartService.itemsInCart.totalCount}}</span>
-        <span class="glyphicon glyphicon-print"></span> Print 
+        <span>{{_cartService.itemsInCart.costOfCart}}</span> 
       </a>
     </div>
     <!-- <div class="collapse navbar-collapse" id="myNavbar">

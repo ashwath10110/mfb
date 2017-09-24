@@ -36,6 +36,11 @@ export class CartComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	clearCart(){
+		this._cartService.initialisedCart();
+		this.cartValue = this._cartService.itemsInCart;
+	}
+
 	goToCheckout(event) {
 		this.router.navigate(['/checkout']);
 	}

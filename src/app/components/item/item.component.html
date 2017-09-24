@@ -11,8 +11,12 @@
         </span>
       </span>
       <span class="card-summary">
-        A summary will also be present. Usually two to three brief sentences about the content on the detail page.
+        {{_item.summary}}
       </span>
+      <span class="card-summary">
+        Price:{{_item.price}}
+      </span>
+      
       <span>
         <button type="button" (click)="removeFromCart($event)">remove</button>
         <span>a{{getCount()}}a</span>

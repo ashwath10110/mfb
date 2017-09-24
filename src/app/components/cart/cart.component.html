@@ -16,6 +16,10 @@ fresh-vegetables: {{cartValue['fresh-vegetables']}}
 	{{subItem.name}}
 </div>
 
+
+<a class="btn btn-success btn-lg pull-right" (click)="clearCart($event)">
+	<span>Clear Cart</span>
+</a>
 <!-- <table class="table table-bordered">
 	<thead>
 	  <tr>
