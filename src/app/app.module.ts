@@ -16,6 +16,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { AppService } from './services/app/app.service';
 import { CartService } from './services/cart/cart.service';
 import { ItemsService } from './services/items/items.service';
+import { LocalStorageService } from './services/local-storage/local-storage.service';
 
 import { CarousalComponent } from './components/carousal/carousal.component';
 import { FreshVegetablesComponent } from './components/fresh-vegetables/fresh-vegetables.component';
@@ -65,7 +66,7 @@ const appRoutes: Routes = [
 		DialogModule,
 		BrowserAnimationsModule
 	],
-	providers: [AppService, CartService, ItemsService],
+	providers: [AppService, CartService, ItemsService, LocalStorageService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

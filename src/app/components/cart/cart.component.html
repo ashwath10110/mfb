@@ -1,4 +1,22 @@
-<table class="table table-bordered">
+exotic-vegetables: {{cartValue['exotic-vegetables']}}
+leafy-green-vegetables: {{cartValue['leafy-green-vegetables']}}
+fresh-fruits: {{cartValue['fresh-fruits']}}
+fresh-vegetables: {{cartValue['fresh-vegetables']}}
+
+<div style="background-color: yellow;" *ngFor="let subItem of cartValue['items']['exotic-vegetables']">
+	{{subItem.name}}
+</div>
+<div style="background-color: red;" *ngFor="let subItem of cartValue['items']['leafy-green-vegetables']">
+	{{subItem.name}}
+</div>
+<div style="background-color: green;" *ngFor="let subItem of cartValue['items']['fresh-fruits']">
+	{{subItem.name}}
+</div>
+<div style="background-color: pink;" *ngFor="let subItem of cartValue['items']['fresh-vegetables']">
+	{{subItem.name}}
+</div>
+
+<!-- <table class="table table-bordered">
 	<thead>
 	  <tr>
 	    <th>Firstname</th>
@@ -23,5 +41,5 @@
 	    <td>july@example.com</td>
 	  </tr>
 	</tbody>
-</table>
-<button type="button" class="btn btn-success pull-right" (click)="goToCheckout($event, item)">Checkout</button>
+</table> -->
+<button type="button" class="btn btn-success pull-right" (click)="goToCheckout($event)">Checkout</button>

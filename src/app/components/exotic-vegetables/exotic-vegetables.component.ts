@@ -14,8 +14,8 @@ export class ExoticVegetablesComponent implements OnInit {
 	typeName = 'exotic-vegetables';
 
 	constructor(
-		private _itemsService: ItemsService,
-		private _cartService: CartService
+		public _itemsService: ItemsService,
+		public _cartService: CartService
 	) {
 		this.listOfExoticVegetables = this._itemsService.items[this.typeName];
 	}

@@ -10,8 +10,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class TabsComponent implements OnInit {
 
 	constructor(
-		protected router: Router,
-		private appService: AppService
+		public router: Router,
+		public appService: AppService
 	) { }
 
 	ngOnInit() {

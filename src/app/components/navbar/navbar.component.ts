@@ -9,8 +9,8 @@ import { CartService } from './../../services/cart/cart.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(protected router: Router,
-    private _cartService: CartService
+  constructor(public router: Router,
+    public _cartService: CartService
   ) { }
 
   ngOnInit() {

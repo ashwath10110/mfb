@@ -13,8 +13,8 @@ export class LeafyGreenVegetablesComponent implements OnInit {
 	typeName = 'leafy-green-vegetables';
 
 	constructor(
-		private _itemsService: ItemsService,
-		private _cartService: CartService
+		public _itemsService: ItemsService,
+		public _cartService: CartService
 	) {
 		this.listOfLeafyGreenVegetables = this._itemsService.items[this.typeName];
 	}

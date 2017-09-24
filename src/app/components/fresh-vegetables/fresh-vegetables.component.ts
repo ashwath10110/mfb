@@ -13,8 +13,8 @@ export class FreshVegetablesComponent implements OnInit {
 	typeName = 'fresh-vegetables';
 	
 	constructor(
-		private _itemsService: ItemsService,
-		private _cartService: CartService
+		public _itemsService: ItemsService,
+		public _cartService: CartService
 	) {
 		this.listOfFreshVegetables = this._itemsService.items[this.typeName];
 	}
