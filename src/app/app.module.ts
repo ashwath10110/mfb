@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -17,6 +19,7 @@ import { AppService } from './services/app/app.service';
 import { CartService } from './services/cart/cart.service';
 import { ItemsService } from './services/items/items.service';
 import { LocalStorageService } from './services/local-storage/local-storage.service';
+import { HttpWrapperService } from './services/http-wrapper/http-wrapper.service';
 
 import { CarousalComponent } from './components/carousal/carousal.component';
 import { FreshVegetablesComponent } from './components/fresh-vegetables/fresh-vegetables.component';
@@ -28,6 +31,11 @@ import { ItemPreviewComponent } from './components/item-preview/item-preview.com
 
 import { DialogModule } from 'primeng/primeng';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+//Http-wrapper
+// import { HttpWrapperModule, HttpWrapper } from '@briisk/http-wrapper';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomeComponent },
@@ -64,9 +72,11 @@ const appRoutes: Routes = [
 			appRoutes
 		),
 		DialogModule,
+		HttpModule,
+		HttpClientModule,
 		BrowserAnimationsModule
 	],
-	providers: [AppService, CartService, ItemsService, LocalStorageService],
+	providers: [AppService, CartService, ItemsService, LocalStorageService, HttpWrapperService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

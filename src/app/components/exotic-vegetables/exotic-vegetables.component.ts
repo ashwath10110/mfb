@@ -17,13 +17,11 @@ export class ExoticVegetablesComponent implements OnInit {
 		public _itemsService: ItemsService,
 		public _cartService: CartService
 	) {
+		debugger;
 		this.listOfExoticVegetables = this._itemsService.items[this.typeName];
 	}
 
 	ngOnInit() {
 	}
 
-	selectItem(event, item) {
-		this.selectedItem = item;
-	}
 }

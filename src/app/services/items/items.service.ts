@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpWrapperService } from './../http-wrapper/http-wrapper.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { RequestOptionsArgs } from '@angular/http';
 
 @Injectable()
 export class ItemsService {
@@ -10,8 +13,13 @@ export class ItemsService {
 		'fresh-vegetables': []
 	};
 
-	constructor() {
-		this.initialiseItems();
+	constructor(private _httpWrapperService: HttpWrapperService) {
+		this._httpWrapperService.get('http://localhost:3000/api/items').subscribe((request) => {
+			this.items = JSON.parse(request['data']);
+			console.log(JSON.parse(request['data']));
+			// console.log(request);
+			// this.items=
+		});
 	}
 
 	initialiseItems() {
@@ -33,5 +41,4 @@ export class ItemsService {
 			}
 		}
 	}
-
 }

@@ -50,20 +50,6 @@ export class CartService {
 
 	getTotalCostOfCart() {
 
-		// let itemTypes = ['exotic-vegetables', 'leafy-green-vegetables', 'fresh-fruits', 'fresh-vegetables'];
-
-		// let cost = 0;
-
-		// for (var i = 0; i < itemTypes[i].length; i++) {
-
-		// 	var type_ = itemTypes[i];
-
-		// 	for (var j = 0; j < this.itemsInCart.items[type_].length; j++) {
-		// 		var currentItem = this.itemsInCart.items[type_][j];
-		// 		cost = cost + currentItem.price;
-		// 	}
-
-		// }
 		return 0;
 	}
 
