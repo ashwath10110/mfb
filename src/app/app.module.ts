@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -19,7 +21,6 @@ import { AppService } from './services/app/app.service';
 import { CartService } from './services/cart/cart.service';
 import { ItemsService } from './services/items/items.service';
 import { LocalStorageService } from './services/local-storage/local-storage.service';
-import { HttpWrapperService } from './services/http-wrapper/http-wrapper.service';
 
 import { CarousalComponent } from './components/carousal/carousal.component';
 import { FreshVegetablesComponent } from './components/fresh-vegetables/fresh-vegetables.component';
@@ -31,14 +32,24 @@ import { ItemPreviewComponent } from './components/item-preview/item-preview.com
 
 import { DialogModule } from 'primeng/primeng';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { LoginComponent } from './components/login/login.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { fakeBackendProvider } from './_helpers/fake-backend';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
+
+import { AuthGuard } from './_guards/index';
+import { AuthenticationService } from './_services/authentication.service';
+import { UserService } from './_services/user.service';
 
 //Http-wrapper
 // import { HttpWrapperModule, HttpWrapper } from '@briisk/http-wrapper';
 
 const appRoutes: Routes = [
-	{ path: '', component: HomeComponent },
+	{ path: '', component: HomeComponent, canActivate: [AuthGuard] },
+	{ path: 'login', component: LoginComponent },
 	{ path: 'exotic-vegetables', component: ExoticVegetablesComponent },
 	{ path: 'leafy-green-vegetables', component: LeafyGreenVegetablesComponent },
 	{ path: 'fresh-fruits', component: FreshFruitsComponent },
@@ -64,7 +75,8 @@ const appRoutes: Routes = [
 		FreshFruitsComponent,
 		ItemComponent,
 		ItemPreviewComponent,
-		CheckoutComponent
+		CheckoutComponent,
+		LoginComponent
 	],
 	imports: [
 		BrowserModule,
@@ -73,10 +85,20 @@ const appRoutes: Routes = [
 		),
 		DialogModule,
 		HttpModule,
+		FormsModule,
 		HttpClientModule,
 		BrowserAnimationsModule
 	],
-	providers: [AppService, CartService, ItemsService, LocalStorageService, HttpWrapperService],
+	providers: [
+		AppService,
+		LocalStorageService,
+		CartService,
+		ItemsService,
+		UserService,
+		AuthenticationService,
+		AuthGuard,
+		BaseRequestOptions
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

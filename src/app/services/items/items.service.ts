@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpWrapperService } from './../http-wrapper/http-wrapper.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { RequestOptionsArgs } from '@angular/http';
+
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
+export class Deal {
+	id: number;
+	name: string;
+	description: string;
+	originalPrice: number;
+	salePrice: number;
+}
 
 @Injectable()
 export class ItemsService {
@@ -13,32 +22,69 @@ export class ItemsService {
 		'fresh-vegetables': []
 	};
 
-	constructor(private _httpWrapperService: HttpWrapperService) {
-		this._httpWrapperService.get('http://localhost:3000/api/items').subscribe((request) => {
-			this.items = JSON.parse(request['data']);
-			console.log(JSON.parse(request['data']));
-			// console.log(request);
-			// this.items=
-		});
+	private publicDealsUrl = 'http://localhost:3000/api/items';
+	private privateDealsUrl = 'http://localhost:3000/api/items';
+
+	constructor(private http: Http) { }
+
+	// Implement a method to get the public deals
+	getPublicDeals() {
+		return this.http
+			.get(this.publicDealsUrl)
+			.toPromise()
+			.then(response => response.json() as Deal[])
+			.catch(this.handleError);
 	}
 
-	initialiseItems() {
-		var itemCateg = ['exotic-vegetables', 'leafy-green-vegetables', 'fresh-fruits', 'fresh-vegetables'];
+	// Implement a method to get the private deals
+	getPrivateDeals() {
+		return this.http
+			.get(this.privateDealsUrl)
+			.toPromise()
+			.then(response => response.json() as Deal[])
+			.catch(this.handleError);
+	}
 
-		for (var i = 0; i < itemCateg.length; i++) {
-			let nameToAppend = '';
-			for (var j = 1; j <= 3; j++) {
-				nameToAppend = itemCateg[i];
+	// Implement a method to handle errors if any
+	private handleError(error: any): Promise<any> {
+		console.error('An error occurred', error);
+		return Promise.reject(error.message || error);
+	}
 
-				this.items[nameToAppend].push({
-					id: j + nameToAppend,
-					typeCategory: nameToAppend,
-					type: i,
-					name: j + nameToAppend,
-					summary: nameToAppend + ' A summary will also be present And it will be about.' + j,
-					price: (100 + i) * 10
-				});
-			}
-		}
+	getData() {
+		return this.http.get('http://localhost:3000/api/items');
 	}
 }
+
+// @Injectable()
+// export class DealService {
+//   // Define the routes we are going to interact with
+//   private publicDealsUrl = 'http://localhost:3001/api/deals/public';
+//   private privateDealsUrl = 'http://localhost:3001/api/deals/private';
+
+//   constructor(private http: Http) { }
+
+//   // Implement a method to get the public deals
+//   getPublicDeals() {
+//     return this.http
+//       .get(this.publicDealsUrl)
+//       .toPromise()
+//       .then(response=>response.json() as Deal[])
+//       .catch(this.handleError);
+//   }
+
+//   // Implement a method to get the private deals
+//   getPrivateDeals() {
+//     return this.http
+//       .get(this.privateDealsUrl)
+//       .toPromise()
+//       .then(response=>response.json() as Deal[])
+//       .catch(this.handleError);
+//   }
+
+//   // Implement a method to handle errors if any
+//   private handleError(error: any): Promise<any> {
+//     console.error('An error occurred', error);
+//     return Promise.reject(error.message || error);
+//   }
+// }
